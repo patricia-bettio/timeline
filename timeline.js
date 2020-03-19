@@ -2,9 +2,12 @@
 
 document.addEventListener("DOMContentLoaded", start);
 
+/* -------------------------- GLOBAL ------------------------------ */
 let allHogwarts;
 let allBullets;
 let thisBullet;
+
+/* -------------------------- ADD SVG ------------------------------ */
 async function start(){
     //timeline
     let response = await fetch("timeline.svg");
@@ -21,12 +24,15 @@ async function start(){
     loadJSON();
 }
 
+/* -------------------------- ONCLICK ACTION ------------------------------ */
+
 function startManipulatingData(){
     console.log("tetse")
    document.querySelector("#bullets").addEventListener("click", selectCircle);
   
 }
 
+/* -------------------------- <use> SVG ------------------------------ */
 function includeInfoBox(){
     const fullTimeline = document.querySelector("#mainSvg");
     const addInfobox = document.createElementNS("http://www.w3.org/2000/svg", "use");
@@ -37,6 +43,7 @@ function includeInfoBox(){
     console.log()
 }
 
+/* -------------------------- LOAD JSON LIST ------------------------------ */
 async function loadJSON(){
     const response = await fetch("potterfilms.json");
     const jsonData = await response.json();
@@ -44,6 +51,7 @@ async function loadJSON(){
     prepareObjects(jsonData);
   }
 
+  /* -------------------------- PREPARE LIST ------------------------------ */
   function prepareObjects(jsonData){
     allHogwarts = jsonData;
     console.log(jsonData)
@@ -58,12 +66,14 @@ async function loadJSON(){
         onetest=(`${i+1}`);
         //onetest=document.querySelector(`#bars > div:nth-child(${i+1})`);
         //onetest.style.setProperty("--barHeight", array[i]);
-        //if the result bellow equals the bullet result number, build the new card
+        //if the result bellow equals the bullet result number (if 1 matches 1, if 3 matches 3), build the new card
         console.log(onetest)
       }
   
     showNewCard(allHogwarts);
   }
+
+/* -------------------------- find BULLETS ------------------------------ */
 
   function finalBullet(){
           
@@ -79,7 +89,7 @@ async function loadJSON(){
     console.log(allBullets[0])
     console.log(allBullets[1])
     
-
+ //find bullets by number, 1, 2, 3,.... if bullet# matches list#, will build a new card
     
     for (let i = 0; i<allBullets.length; i++){
         let bulletselection;
@@ -90,12 +100,12 @@ async function loadJSON(){
         console.log(bulletselection)
         console.log(allBullets[i])
         showNewCard(bulletselection)
-      
       }
-      
   }
 
+  /* -------------------------- USER INPUT ------------------------------ */
 function selectCircle(selectedBullet){
+  //the bullet the user is clicking on:
     console.log(selectedBullet)
     let userChoice = selectedBullet.target;
    console.log(userChoice)
@@ -103,15 +113,13 @@ function selectCircle(selectedBullet){
     console.log(bulletselection)
     console.log(allHogwarts[0])
     console.log(allBullets[0])
-
-
 }
+
 
 /* function showNewCard(allHogwarts, bulletselection){
     //console.log(bulletselection)
     //console.log(allHogwarts)
     //console.log(allHogwarts[0].director)
-   
     //document.querySelector(".director").textContent = allHogwarts.director;
 } */
 
