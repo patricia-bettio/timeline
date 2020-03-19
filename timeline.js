@@ -34,11 +34,11 @@ function startManipulatingData(){
 
 /* -------------------------- <use> SVG ------------------------------ */
 function includeInfoBox(){
-    const fullTimeline = document.querySelector("#mainSvg");
+    const fullTimeline = document.querySelector("#mainSvg svg");
     const addInfobox = document.createElementNS("http://www.w3.org/2000/svg", "use");
-    addInfobox.setAttribute("width", "518");
-    addInfobox.setAttribute("height", "251");
-    addInfobox.setAttribute("href", "#infobox_template");
+    addInfobox.setAttribute("width", "500");
+    addInfobox.setAttribute("height", "250");
+    addInfobox.setAttribute("href", "#infobox");
     fullTimeline.appendChild(addInfobox);
     console.log()
 }
