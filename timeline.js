@@ -70,7 +70,7 @@ async function loadJSON(){
         console.log(onetest)
       }
   
-    showNewCard(allHogwarts);
+    //showNewCard(allHogwarts);
   }
 
 /* -------------------------- find BULLETS ------------------------------ */
@@ -99,7 +99,7 @@ async function loadJSON(){
         //if the result bellow equals the bullet result number, build the new card
         console.log(bulletselection)
         console.log(allBullets[i])
-        showNewCard(bulletselection)
+        //showNewCard(bulletselection)
       }
   }
 
