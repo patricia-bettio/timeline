@@ -4,8 +4,9 @@ document.addEventListener("DOMContentLoaded", start);
 
 /* -------------------------- GLOBAL ------------------------------ */
 let allHogwarts;
-let allBullets;
+let bulletNumber = [];
 let thisBullet;
+let allBullets;
 
 /* -------------------------- ADD SVG ------------------------------ */
 async function start(){
@@ -20,7 +21,7 @@ async function start(){
     //load json
     startManipulatingData();
     includeInfoBox();
-    finalBullet();
+    //finalBullet();
     loadJSON();
 }
 
@@ -38,7 +39,7 @@ function includeInfoBox(){
     const addInfobox = document.createElementNS("http://www.w3.org/2000/svg", "use");
     addInfobox.setAttribute("width", "500");
     addInfobox.setAttribute("height", "250");
-    addInfobox.setAttribute("href", "#infobox");
+    addInfobox.setAttribute("href", "#infobox_template");
     fullTimeline.appendChild(addInfobox);
     console.log()
 }
@@ -70,12 +71,12 @@ async function loadJSON(){
         console.log(onetest)
       }
   
-    //showNewCard(allHogwarts);
+    showNewCard(allHogwarts);
   }
 
 /* -------------------------- find BULLETS ------------------------------ */
 
-  function finalBullet(){
+ /*  function finalBullet(){
           
     //get firt child and rename the class to "0"
     let singleButton = document.querySelector(".bullet");
@@ -99,27 +100,39 @@ async function loadJSON(){
         //if the result bellow equals the bullet result number, build the new card
         console.log(bulletselection)
         console.log(allBullets[i])
-        //showNewCard(bulletselection)
+        //showNewCard(allHogwarts, bulletselection)
       }
-  }
+      
+  } */
 
   /* -------------------------- USER INPUT ------------------------------ */
 function selectCircle(selectedBullet){
   //the bullet the user is clicking on:
     console.log(selectedBullet)
     let userChoice = selectedBullet.target;
-   console.log(userChoice)
-    console.log(allHogwarts)
-    console.log(bulletselection)
-    console.log(allHogwarts[0])
-    console.log(allBullets[0])
+    console.log(userChoice)
+
+      bulletNumber = document.querySelectorAll(".bullet")
+      //console.log(bulletNumber)
+
+     //bullet user selected:
+     console.log(userChoice)
+     //for the 1st bullet, 1st movie
+     console.log(bulletNumber[0])
+     console.log(allHogwarts[0])
+      //for the 2nd bullet, 2nd movie...
+      console.log(bulletNumber[1])
+      console.log(allHogwarts[1])
+      
+   
 }
 
 
-/* function showNewCard(allHogwarts, bulletselection){
-    //console.log(bulletselection)
-    //console.log(allHogwarts)
-    //console.log(allHogwarts[0].director)
-    //document.querySelector(".director").textContent = allHogwarts.director;
-} */
+function showNewCard(allHogwarts, bulletselection){
+    console.log(bulletselection)
+    console.log(allHogwarts)
+    console.log(allHogwarts[0].director)
+    console.log(allHogwarts)
+   //document.querySelector(".director").textContent = allHogwarts.director;
+}
 
